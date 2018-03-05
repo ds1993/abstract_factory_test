@@ -11,7 +11,7 @@ Maze::~Maze()
     printf("delete a Maze\n");
 }
 
-void Maze::AddRoom(Room* room)
+void Maze::AddRoom(std::shared_ptr<Room> room)
 {
     int roomNum = room->GetRoomNumber();
     if (RoomList.find(roomNum) != RoomList.end()) {
@@ -23,7 +23,7 @@ void Maze::AddRoom(Room* room)
     }
 }
 
-Room* Maze::RoomNo(int roomNum)
+std::shared_ptr<Room> Maze::RoomNo(int roomNum)
 {
     if (RoomList.find(roomNum) != RoomList.end()) {
         return RoomList[roomNum];

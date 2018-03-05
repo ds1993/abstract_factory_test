@@ -1,7 +1,7 @@
 #ifndef MAZEFACTORY_H
 #define MAZEFACTORY_H
 
-#include <vector>
+#include <memory>
 #include "Maze.h"
 #include "Wall.h"
 #include "Room.h"
@@ -12,16 +12,10 @@ public:
     MazeFactory();
     virtual ~MazeFactory();
 
-    virtual Maze* MakeMaze();
-    virtual Wall* MakeWall();
-    virtual Room* MakeRoom(int);
-    virtual Door* MakeDoor(Room* r1, Room* r2);
-
-private:
-    std::vector<Maze*> maze_list;
-    std::vector<Wall*> wall_list;
-    std::vector<Room*> room_list;
-    std::vector<Door*> door_list;
+    virtual std::shared_ptr<Maze> MakeMaze();
+    virtual std::shared_ptr<Wall> MakeWall();
+    virtual std::shared_ptr<Room> MakeRoom(int);
+    virtual std::shared_ptr<Door> MakeDoor(std::shared_ptr<Room> r1, std::shared_ptr<Room> r2);
 };
 
 #endif

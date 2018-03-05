@@ -1,6 +1,7 @@
 #ifndef MAZE_H
 #define MAZE_H
 
+#include <memory>
 #include <map>
 #include "Room.h"
 #include "Door.h"
@@ -11,14 +12,11 @@ public:
     Maze();
     ~Maze();
 
-    void AddRoom(Room*);
-    Room* RoomNo(int);
-
-    void AddDoor(Door*);
-    Wall* CreateWall();
+    void AddRoom(std::shared_ptr<Room>);
+    std::shared_ptr<Room> RoomNo(int);
    
 private:
-    std::map<int, Room*> RoomList;
+    std::map<int, std::shared_ptr<Room>> RoomList;
 };
 
 #endif

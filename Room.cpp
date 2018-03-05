@@ -11,12 +11,12 @@ Room::~Room()
     printf("delete a Room\n");
 }
 
-MapSite* Room::GetSide(Direction d) const
+std::shared_ptr<MapSite> Room::GetSide(Direction d) const
 {
     return _sides[d];
 }
 
-void Room::SetSide(Direction d, MapSite* mapsite)
+void Room::SetSide(Direction d, std::shared_ptr<MapSite> mapsite)
 {
     _sides[d] = mapsite;
 }

@@ -1,20 +1,21 @@
 #ifndef DOOR_H
 #define DOOR_H
 
+#include <memory>
 #include "MapSite.h"
 #include "Room.h"
 
 class Door: public MapSite {
 public:
-    Door(Room* room1 = NULL, Room* room2 = NULL);
+    Door(std::shared_ptr<Room> room1 = NULL, std::shared_ptr<Room> room2 = NULL);
     ~Door();
 
     virtual void Enter();
-    Room* otherSideFrom(Room*);
+    std::shared_ptr<Room> otherSideFrom(std::shared_ptr<Room>);
 
 private:
-    Room* _room1;
-    Room* _room2;
+    std::weak_ptr<Room> _room1;
+    std::weak_ptr<Room> _room2;
     bool _isOpen;
 };
 

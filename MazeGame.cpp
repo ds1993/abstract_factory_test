@@ -8,12 +8,12 @@ MazeGame::~MazeGame()
 {
 }
 
-Maze* MazeGame::CreateMaze(MazeFactory& factory)
+std::shared_ptr<Maze> MazeGame::CreateMaze(MazeFactory& factory)
 {
-    Maze* aMaze = factory.MakeMaze();
-    Room* r1 = factory.MakeRoom(1);
-    Room* r2 = factory.MakeRoom(2);
-    Door* aDoor = factory.MakeDoor(r1, r2);
+    std::shared_ptr<Maze> aMaze = factory.MakeMaze();
+    std::shared_ptr<Room> r1 = factory.MakeRoom(1);
+    std::shared_ptr<Room> r2 = factory.MakeRoom(2);
+    std::shared_ptr<Door> aDoor = factory.MakeDoor(r1, r2);
 
     aMaze->AddRoom(r1);
     aMaze->AddRoom(r2);
